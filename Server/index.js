@@ -1,9 +1,15 @@
 const express = require('express')
+require('dotenv').config()
 const mongoose = require('mongoose')
 const cors = require('cors')
 const TodoModel = require('./Models/todos')
 
-mongoose.connect('mongodb://127.0.0.1:27017/Todolist', console.log('database connected'))
+mongoose.connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 const app = express()
 app.use(cors())
@@ -41,6 +47,6 @@ app.delete('/delete/:id', (req, res) => {
         .then(result => res.json(result))
         .catch(err => console.log(err))
 })
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log('server is running port 3000')
 })
