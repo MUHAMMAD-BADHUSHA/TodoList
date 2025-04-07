@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const TodoModel = require('./Models/todos')
 
-mongoose.connect('mongodb://localhost:27017/TodoList', console.log('database connected'))
+mongoose.connect('mongodb://127.0.0.1:27017/Todolist', console.log('database connected'))
 
 const app = express()
 app.use(cors())
