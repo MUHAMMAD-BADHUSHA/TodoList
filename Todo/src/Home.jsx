@@ -16,7 +16,7 @@ function Home() {
     }
 
     axios
-      .post('http://localhost:3000/add', { todo: todo })
+      .post('https://todo-list-b56m.onrender.com/add', { todo: todo })
       .then((result) => {
         console.log(result)
         location.reload()// Refresh the todos list
@@ -27,7 +27,7 @@ function Home() {
  
   useEffect(() => {
     axios
-    .get('https://todo-list-b56m.onrender.comget')
+    .get('https://todo-list-b56m.onrender.com/get')
     .then((result) => setTodos(result.data))
     .catch((err) => console.log(err));
   }, []);
