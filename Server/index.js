@@ -10,7 +10,11 @@ mongoose.connect(mongoURl)
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 const app = express()
-app.use(cors())
+app.use(cors({
+    origin: 'https://your-vercel-app.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+  }));
 app.use(express.json())
 
 app.post('https://todo-list-two-tau-46.vercel.app/add', (req, res) => {
