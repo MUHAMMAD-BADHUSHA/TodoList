@@ -64,7 +64,7 @@ function Home() {
       </div>
       <div>
         {todos.length === 0 ? (
-          <div className="h1">
+          <div className="h1" style={{paddingTop:'40px'}}>
             <h1>Add Todo</h1>
           </div>
         ) : (

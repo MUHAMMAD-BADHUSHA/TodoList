@@ -52,7 +52,7 @@ outline-color: transparent;
 cursor: pointer;
 font-size: larger;
 font-weight: 900;
-color: grey;
+color: rgb(22, 22, 22);
 margin-right: 5px;
 }
 .app .todos {
@@ -65,7 +65,7 @@ flex-direction: column;
 margin-top: 0.8em;
 width: 20em;
 height: 2em;
-background-color: white;
+background-color: rgb(203, 200, 212);
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -83,7 +83,7 @@ margin-left: 3px;
 font-size: medium;
 font-weight: 700;
 font-style: normal;
-color: grey;
+color: rgb(35, 36, 35);
 }
 .btn{
     background-color: rgb(247, 249, 250);
@@ -105,9 +105,10 @@ color: grey;
 .day{
     
     text-align: center;
-    color: #fc1111;
+    color: #d40303;
 }
 .line-through {
     text-decoration: line-through;
+    color: #020631;
   }
   
