@@ -12,12 +12,12 @@ mongoose
 
 const app = express();
 app.use(
-  cors({
-    origin: "https://todo-list-two-tau-46.vercel.app/",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+    cors({
+      origin: "https://todo-list-two-tau-46.vercel.app",
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      credentials: true,
+    })
+  );
 app.use(express.json());
 
 app.post("/add", (req, res) => {
