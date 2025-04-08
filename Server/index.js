@@ -20,6 +20,10 @@ app.use(
   );
 app.use(express.json());
 
+app.get('/',(req,res)=>{
+    res.send('todo server')
+})
+
 app.post("/add", (req, res) => {
   const todo = req.body.todo;
   TodoModel.create({
