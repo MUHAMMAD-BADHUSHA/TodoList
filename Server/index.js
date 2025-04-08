@@ -13,7 +13,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.post('/add', (req, res) => {
+app.post('https://todo-list-two-tau-46.vercel.app/add', (req, res) => {
     const todo = req.body.todo
     TodoModel.create({
         todo: todo
@@ -22,12 +22,12 @@ app.post('/add', (req, res) => {
         .catch(err => res.json(err))
 
 })
-app.get('/get', async (req, res) => {
+app.get('https://todo-list-two-tau-46.vercel.app/get', async (req, res) => {
     await TodoModel.find()
         .then(result => res.json(result))
         .catch(err => console.log(err))
 })
-app.put('/update/:id', async (req, res) => {
+app.put('https://todo-list-two-tau-46.vercel.app/update/:id', async (req, res) => {
     
 
      const { id } = req.params;
@@ -39,7 +39,7 @@ app.put('/update/:id', async (req, res) => {
 })
 
 
-app.delete('/delete/:id', (req, res) => {
+app.delete('https://todo-list-two-tau-46.vercel.app/delete/:id', (req, res) => {
     const { id } = req.params;
     TodoModel.findByIdAndDelete({ _id: id })
         .then(result => res.json(result))
