@@ -11,13 +11,25 @@ mongoose
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 const app = express();
+const allowedOrigins = [
+  "https://todo-list-two-tau-46.vercel.app",
+  "http://localhost:5173"
+];
+
 app.use(
-    cors({
-      origin: "https://todo-list-two-tau-46.vercel.app",
-      methods: ["GET", "POST", "PUT", "DELETE"],
-      credentials: true,
-    })
-  );
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 app.get('/',(req,res)=>{
