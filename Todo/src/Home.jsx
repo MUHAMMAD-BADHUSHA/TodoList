@@ -4,8 +4,6 @@ import axios from 'axios';
 function Home() {
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState('');
-
-  // Function to fetch todos
  
 
 
@@ -17,9 +15,11 @@ function Home() {
 
     axios
       .post('https://todo-list-b56m.onrender.com/add', { todo: todo })
-      .then((result) => {
-        console.log(result)
-        location.reload()// Refresh the todos list
+      .then((response) => {
+        if (response.data.success) {  
+          console.log(response.data.data);      
+          setTodo('')       
+        } 
       })
       .catch((err) => console.log(err));
   };
@@ -28,20 +28,23 @@ function Home() {
   useEffect(() => {
     axios
     .get('https://todo-list-b56m.onrender.com/get')
-    .then((result) => setTodos(result.data))
+    .then((response) => setTodos(response.data.data))
     .catch((err) => console.log(err));
-  }, []);
+  }, [todo]);
 
  const handleDelete=(id)=>{
     axios.delete('https://todo-list-b56m.onrender.com/delete/'+id)
-    .then(result=>{location.reload()})
+   .then((response) => {
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo._id !== id));
+      console.log(response.data.message);
+    })
     .catch((err) => console.log(err));
  }
  const handleUpdate=(id)=>{
     axios.put('https://todo-list-b56m.onrender.com/update/'+id)
-    .then(result=>{
-        location.reload()
-        console.log(result)})
+    .then(response=>{
+        
+        console.log(response.data.message)})
     .catch((err) => console.log(err))
  }
 
